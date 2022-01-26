@@ -6,15 +6,22 @@ import java.util.List;
 
 public interface PostService {
 
-    public Post savePost(Post post);
+    Post savePost(Post post);
 
-    public List<Post> getPostList();
+    List<Post> getPostList();
 
-    public Post getPostById(Long postId);
+    Post getPostById(Long postId);
 
-    public void deletePostById(Long postId);
+    void deletePostById(Long postId);
 
-    public Post updatePost(Long postId, Post post);
+     Post updatePost(Long postId, Post post);
 
-   public List<Post> getPostsByTitle(String title);
+    List<Post> getPostsByTitle(String title);
+
+    List<Post> getPostsOrderByTitle();
+
+    List<Post> getStarPosts();
+
+    Post updatePostSetStar(Long postId, Boolean update);
+
 }

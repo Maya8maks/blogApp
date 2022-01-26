@@ -1,5 +1,6 @@
 package com.borshcheva.blog.service;
 
+
 import com.borshcheva.blog.entity.Post;
 import com.borshcheva.blog.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -52,4 +53,24 @@ public class PostServiceImpl implements PostService {
     public List<Post> getPostsByTitle(String title) {
         return postRepository.findByTitle(title);
     }
+
+    @Override
+    public List<Post> getPostsOrderByTitle() {
+        return postRepository.findByOrderByTitleAsc();
+    }
+
+    @Override
+    public List<Post> getStarPosts() {
+        return postRepository.findByStarTrue();
+    }
+
+    @Override
+    public Post updatePostSetStar(Long postId, Boolean updateValue) {
+        Post post = postRepository.findById(postId).get();
+        post.setStar(updateValue);
+
+        return postRepository.save(post);
+    }
+
+
 }
