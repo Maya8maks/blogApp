@@ -1,6 +1,8 @@
 package com.borshcheva.blog.service;
 
 
+import com.borshcheva.blog.dto.PostCommentDto;
+import com.borshcheva.blog.entity.Comment;
 import com.borshcheva.blog.entity.Post;
 import com.borshcheva.blog.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -70,6 +72,19 @@ public class PostServiceImpl implements PostService {
         post.setStar(updateValue);
 
         return postRepository.save(post);
+    }
+
+    @Override
+    public PostCommentDto getPostFull(Long postId) {
+        Post post = postRepository.findById(postId).get();
+        List<Comment> comments = post.getComments();
+        var postCommentDto = new PostCommentDto();
+        postCommentDto.setId(postId);
+        postCommentDto.setTitle(post.getTitle());
+        postCommentDto.setContent(post.getContent());
+        postCommentDto.setComments(comments);
+
+        return postCommentDto;
     }
 
 

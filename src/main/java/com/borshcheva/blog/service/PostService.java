@@ -1,5 +1,6 @@
 package com.borshcheva.blog.service;
 
+import com.borshcheva.blog.dto.PostCommentDto;
 import com.borshcheva.blog.entity.Post;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface PostService {
 
     void deletePostById(Long postId);
 
-     Post updatePost(Long postId, Post post);
+    Post updatePost(Long postId, Post post);
 
     List<Post> getPostsByTitle(String title);
 
@@ -24,4 +25,5 @@ public interface PostService {
 
     Post updatePostSetStar(Long postId, Boolean update);
 
+    PostCommentDto getPostFull(Long postId);
 }

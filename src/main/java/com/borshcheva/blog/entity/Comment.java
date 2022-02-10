@@ -1,6 +1,6 @@
 package com.borshcheva.blog.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -23,10 +23,9 @@ public class Comment {
     private Date creationDate;
 
     @ManyToOne()
+    @JsonIgnore
     @JoinColumn(name = "post_id")
-    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Post post;
-
 
 }
 

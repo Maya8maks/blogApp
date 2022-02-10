@@ -1,5 +1,6 @@
 package com.borshcheva.blog.controller;
 
+import com.borshcheva.blog.dto.PostCommentDto;
 import com.borshcheva.blog.entity.Comment;
 import com.borshcheva.blog.entity.Post;
 import com.borshcheva.blog.service.CommentService;
@@ -87,5 +88,10 @@ public class PostController {
     @GetMapping("/posts/{id}/comments/{commentId}")
     public List<Comment> getCommentsByPostIdAngByCommentId(@PathVariable("id") Long postId, @PathVariable("commentId") Long commentId) {
         return commentService.getCommentsByPostIdAngByCommentId(postId, commentId);
+    }
+
+    @GetMapping("/posts/{id}/full")
+    public PostCommentDto getPostsWithComments(@PathVariable("id") Long postId) {
+        return postService.getPostFull(postId);
     }
 }
